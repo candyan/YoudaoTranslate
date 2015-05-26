@@ -12,9 +12,11 @@ class Translate{
 		$res = $workflows->request($api);
 		$res = json_decode( $res );
 		if ($res->errorCode == 0) {
+			$phonetic = $res->basic->phonetic;
+			
 			$workflows->result(     $query,
 									$res->translation[0],
-									$res->translation[0],
+									$res->translation[0]." (".$phonetic.")",
 									$query,
 									"translate.png");
 
